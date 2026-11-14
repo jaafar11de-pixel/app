@@ -3,31 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1c1917">
+<meta name="theme-color" content="#0e0d0c">
+<meta name="color-scheme" content="dark">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>إدارة البراند</title>
+<title>Kül</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ألوان ثابتة من لوغو Kül — ما بتتغيّر مع الوضع الليلي أو النهاري */
 :root{
-  --bg:#f6f3ee; --card:#ffffff; --ink:#1c1917; --muted:#78716c; --line:#e7e2da;
-  --accent:#9a3412; --accent-soft:#fdf0e8; --good:#15803d; --good-soft:#e9f7ee; --bad:#b91c1c; --bad-soft:#fdecec;
-  --warn:#a16207; --warn-soft:#fdf6e3; --info:#1d4ed8; --info-soft:#eaf0fd;
-}
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#141210; --card:#1f1c19; --ink:#f5f2ed; --muted:#a8a29e; --line:#33302c;
-    --accent:#fb923c; --accent-soft:#3a2516; --good:#4ade80; --good-soft:#15291c; --bad:#f87171; --bad-soft:#3a1b1b;
-    --warn:#facc15; --warn-soft:#332a10; --info:#93c5fd; --info-soft:#17233a; }
+  color-scheme: dark;
+  --bg:#0e0d0c; --card:#1a1816; --card2:#221f1c; --ink:#ece6da; --muted:#9b948a; --line:#2e2a26;
+  --cream:#ece6da; --on-cream:#0e0d0c;
+  --good:#8fc79c; --good-soft:#1c2a1f; --bad:#e8877a; --bad-soft:#2f1b18;
+  --warn:#e2bd72; --warn-soft:#2e2615; --wa:#2fb463;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo",system-ui,sans-serif;font-size:15px}
 body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(12px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
-header h1{margin:0;font-size:20px;font-weight:800}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+header .brand{display:flex;align-items:center;gap:12px}
+header img{height:34px;display:block}
 header .sub{font-size:12px;color:var(--muted)}
 .iconbtn{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:12px;width:40px;height:40px;font-size:18px;cursor:pointer}
 main{padding:14px 14px 0;max-width:720px;margin:0 auto}
@@ -35,6 +35,7 @@ main{padding:14px 14px 0;max-width:720px;margin:0 auto}
 .banner{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:var(--warn-soft);color:var(--warn);font-size:13px;display:none}
 .banner.on{display:block}
 .search{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
+.search::placeholder,input::placeholder,textarea::placeholder{color:#6f6961}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
 .tap{cursor:pointer}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
@@ -42,73 +43,80 @@ main{padding:14px 14px 0;max-width:720px;margin:0 auto}
 .muted{font-size:12px;color:var(--muted)}
 .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
 .good{background:var(--good-soft);color:var(--good)}.bad{background:var(--bad-soft);color:var(--bad)}
-.warn{background:var(--warn-soft);color:var(--warn)}.info{background:var(--info-soft);color:var(--info)}
-.grey{background:var(--bg);color:var(--muted)}
+.warn{background:var(--warn-soft);color:var(--warn)}.grey{background:var(--card2);color:var(--muted)}
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.mini{background:var(--bg);border-radius:12px;padding:8px 10px}
+.mini{background:var(--card2);border-radius:12px;padding:8px 10px}
 .mini .l{font-size:11px;color:var(--muted)}.mini .v{font-size:15px;font-weight:700}
 .empty{text-align:center;color:var(--muted);padding:40px 16px}
 .empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
-.fab{position:fixed;left:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:18px;border:0;background:var(--accent);color:#fff;font-size:30px;box-shadow:0 6px 20px rgba(0,0,0,.18);cursor:pointer;z-index:6}
+.fab{position:fixed;left:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:18px;border:0;background:var(--cream);color:var(--on-cream);font-size:30px;box-shadow:0 6px 20px rgba(0,0,0,.5);cursor:pointer;z-index:6}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:7}
 nav button{flex:1;border:0;background:none;color:var(--muted);font:inherit;font-size:13px;padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative}
-nav button .i{font-size:20px}
-nav button.on{color:var(--accent);font-weight:700}
+nav button .i{font-size:20px;filter:grayscale(1);opacity:.7}
+nav button.on{color:var(--cream);font-weight:700}
+nav button.on .i{filter:none;opacity:1}
 nav .badge{position:absolute;top:6px;right:calc(50% - 22px);background:var(--bad);color:#fff;border-radius:999px;font-size:10px;min-width:17px;height:17px;line-height:17px;padding:0 4px}
 .chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px}
 .chips button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
-.chips button.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.chips button.on{background:var(--cream);color:var(--on-cream);border-color:var(--cream);font-weight:700}
 .big{font-size:30px;font-weight:800;line-height:1.2}
 .kpi .l{font-size:12px;color:var(--muted)}.kpi .v{font-size:18px;font-weight:800}
 .row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
 .row:last-child{border-bottom:0}
-.bar{height:6px;background:var(--bg);border-radius:6px;margin-top:4px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--accent);border-radius:6px}
+.bar{height:6px;background:var(--card2);border-radius:6px;margin-top:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--cream);border-radius:6px}
 h2.sec{font-size:14px;color:var(--muted);margin:18px 4px 8px;font-weight:600}
-.items{font-size:13px;margin-top:6px;color:var(--ink)}
+.items{font-size:13px;margin-top:6px}
 /* sheets */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:20;display:none;align-items:flex-end;justify-content:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:20;display:none;align-items:flex-end;justify-content:center}
 .overlay.on{display:flex}
-.sheet{background:var(--card);width:100%;max-width:720px;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:94vh;overflow:auto}
+.sheet{background:var(--card);width:100%;max-width:720px;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:94vh;overflow:auto;border-top:1px solid var(--line)}
 .sheet h2{margin:0 0 10px;font-size:18px}
 label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
 input,select,textarea{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+select{appearance:auto}
 textarea{min-height:110px;resize:vertical}
 .exrow{display:flex;gap:6px;margin-bottom:6px}
 .exrow input:first-child{flex:2}.exrow input:nth-child(2){flex:1}
 .x{border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px}
-.ghost{border:1px dashed var(--line);background:none;color:var(--accent);border-radius:12px;padding:10px;width:100%;font:inherit;cursor:pointer;margin-top:6px}
+.ghost{border:1px dashed #4a453f;background:none;color:var(--cream);border-radius:12px;padding:10px;width:100%;font:inherit;cursor:pointer;margin-top:6px}
 .btns{display:flex;gap:8px;margin-top:16px}
 .btn{flex:1;padding:13px;border-radius:14px;border:0;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-align:center;text-decoration:none;display:inline-block}
-.btn.pri{background:var(--accent);color:#fff}.btn.sec{background:var(--bg);color:var(--ink)}.btn.dng{background:var(--bad-soft);color:var(--bad)}
-.btn.wa{background:#16a34a;color:#fff}
+.btn.pri{background:var(--cream);color:var(--on-cream)}.btn.sec{background:var(--card2);color:var(--ink)}.btn.dng{background:var(--bad-soft);color:var(--bad)}
+.btn.wa{background:var(--wa);color:#fff}
 .btn.sm{padding:10px;font-size:14px}
 .btn:disabled{opacity:.5}
-.calc{background:var(--bg);border-radius:12px;padding:6px 12px;margin-top:12px;font-size:14px}
-.itemcard{border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:8px;background:var(--bg)}
-.itemcard input,.itemcard select{background:var(--card);padding:9px 10px;font-size:15px}
+.calc{background:var(--card2);border-radius:12px;padding:6px 12px;margin-top:12px;font-size:14px}
+.itemcard{border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px;background:var(--card2)}
+.itemcard input,.itemcard select{background:var(--bg);padding:9px 10px;font-size:15px}
 .itemcard .r{display:flex;gap:6px;margin-top:6px}
+.itemcard .r > *{flex:1}
+.itemcard details{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
+.itemcard summary{cursor:pointer;font-size:13px;color:var(--muted);list-style:none;display:flex;justify-content:space-between;gap:8px;padding:4px 0}
+.itemcard summary::-webkit-details-marker{display:none}
+.itemcard summary b{color:var(--ink)}
 .seg{display:flex;background:var(--bg);border-radius:12px;padding:4px;gap:4px}
-.seg button{flex:1;border:0;background:none;padding:9px 0;border-radius:9px;font:inherit;font-size:13px;color:var(--muted);cursor:pointer}
-.seg button.on{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.seg button.on.g{background:var(--good);color:#fff}.seg button.on.b{background:var(--bad);color:#fff}.seg button.on.i{background:var(--info);color:#fff}.seg button.on.w{background:var(--warn);color:#fff}
-.paste{background:var(--accent-soft);border-radius:14px;padding:10px;margin-bottom:6px}
-.paste textarea{background:var(--card);min-height:90px}
-.toast{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:40;display:none;max-width:90%;text-align:center}
+.seg button{flex:1;border:0;background:none;padding:10px 0;border-radius:9px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer}
+.seg button.on.g{background:var(--good);color:#0e0d0c;font-weight:700}.seg button.on.b{background:var(--bad);color:#0e0d0c;font-weight:700}.seg button.on.w{background:var(--warn);color:#0e0d0c;font-weight:700}
+.paste{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:6px}
+.paste textarea{min-height:90px}
+.toast{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:var(--cream);color:var(--on-cream);padding:10px 16px;border-radius:12px;font-size:14px;z-index:40;display:none;max-width:90%;text-align:center;font-weight:600}
 .toast.on{display:block}
 #login{position:fixed;inset:0;background:var(--bg);z-index:30;display:none;align-items:center;justify-content:center;padding:24px}
 #login.on{display:flex}
 #login .box{width:100%;max-width:380px}
-#login h1{font-size:26px;margin:0 0 4px}
+#login img{width:150px;display:block;margin:0 auto 18px}
 .err{color:var(--bad);font-size:13px;min-height:20px;margin-top:8px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,180,99,.6)}50%{box-shadow:0 0 0 8px rgba(47,180,99,0)}}
+.pulse{animation:pulse 1.2s ease-in-out 3}
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1 id="brandTitle">إدارة البراند</h1>
+  <div class="brand">
+    <img src="logo.png" alt="Kül">
     <div class="sub" id="syncNote">جاري التحميل…</div>
   </div>
   <button class="iconbtn" id="settingsBtn" aria-label="الإعدادات">⚙︎</button>
@@ -120,12 +128,10 @@ textarea{min-height:110px;resize:vertical}
   <section class="view on" id="v-orders">
     <input class="search" id="orderSearch" placeholder="ابحث برقم الطلب أو الاسم أو الهاتف…">
     <div class="chips" id="orderChips">
-      <button data-f="open" class="on">الطلبات المفتوحة</button>
+      <button data-f="open" class="on">المفتوحة</button>
       <button data-f="pending">قيد الانتظار</button>
-      <button data-f="transit">بالطريق</button>
       <button data-f="unpaid">الدفع ما وصل</button>
       <button data-f="delivered">تم التسليم</button>
-      <button data-f="cancelled">ملغية</button>
       <button data-f="all">الكل</button>
     </div>
     <div id="orderList"></div>
@@ -160,8 +166,8 @@ textarea{min-height:110px;resize:vertical}
 <div class="toast" id="toast"></div>
 
 <div id="login"><form class="box" id="loginForm">
-  <h1 id="loginTitle">إدارة البراند</h1>
-  <div class="muted">دخول المديرين فقط</div>
+  <img src="logo.png" alt="Kül">
+  <div class="muted" style="text-align:center">دخول المديرين فقط</div>
   <label>الإيميل</label><input id="lEmail" type="email" autocomplete="username" required dir="ltr">
   <label>كلمة السر</label><input id="lPass" type="password" autocomplete="current-password" required dir="ltr">
   <div class="err" id="lErr"></div>
@@ -172,9 +178,10 @@ textarea{min-height:110px;resize:vertical}
 <script>
 (function(){
 "use strict";
+const APP_NAME = "Kül";
 const SDK = "https://www.gstatic.com/firebasejs/10.12.2/";
 const CFG = window.FIREBASE_CONFIG;
-const DEMO = !CFG || !CFG.apiKey || /PASTE|ضع/.test(CFG.apiKey);
+const DEMO = !CFG || !CFG.apiKey || /PASTE/.test(CFG.apiKey);
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -182,25 +189,25 @@ const AR_DIG = "٠١٢٣٤٥٦٧٨٩";
 const num = v => { const n = parseFloat(String(v ?? "").replace(/[٠-٩]/g, d => AR_DIG.indexOf(d)).replace(/[,،\s]/g,"").replace(/[^\d.\-]/g,"")); return isFinite(n) ? n : 0; };
 const norm = s => String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\s+/g," ").trim();
 
-let products = [], orders = [], settings = { brand: "إدارة البراند", currency: "$" };
+let products = [], orders = [], settings = { currency: "$" };
 let got = { products:false, orders:false };
 let view = "orders", orderFilter = "open", profitPeriod = "month";
 
 /* ============ data layer ============ */
 const Store = {};
+const rid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 if (DEMO) {
-  const KEY = "brandapp_demo_v1";
+  const KEY = "kul_demo_v1";
   let mem; try { mem = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ mem = {}; }
-  mem.products = mem.products || {}; mem.orders = mem.orders || {}; mem.settings = mem.settings || {};
+  ["products","orders","settings"].forEach(k => mem[k] = mem[k] || {});
   const subs = {};
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch(e){} };
   const emit = col => (subs[col]||[]).forEach(cb => cb(Object.entries(mem[col]).map(([id,d]) => ({ id, ...d }))));
-  const rid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
   Store.listen = (col, cb) => { (subs[col] = subs[col] || []).push(cb); setTimeout(() => emit(col), 0); };
-  Store.add = async (col, d) => { mem[col][rid()] = d; save(); emit(col); };
-  Store.set = async (col, id, d) => { mem[col][id] = d; save(); emit(col); };
-  Store.update = async (col, id, d) => { mem[col][id] = { ...(mem[col][id]||{}), ...d }; save(); emit(col); };
-  Store.remove = async (col, id) => { delete mem[col][id]; save(); emit(col); };
+  Store.add = (col, d) => { const id = rid(); mem[col][id] = d; save(); emit(col); return id; };
+  Store.set = (col, id, d) => { mem[col][id] = d; save(); emit(col); };
+  Store.update = (col, id, d) => { mem[col][id] = { ...(mem[col][id]||{}), ...d }; save(); emit(col); };
+  Store.remove = (col, id) => { delete mem[col][id]; save(); emit(col); };
   Store.logout = null;
 }
 
@@ -216,9 +223,9 @@ async function initFirebase(){
   Store.listen = (col, cb, err) => ff.onSnapshot(ff.collection(fs, col), { includeMetadataChanges: true }, snap => {
     cb(snap.docs.map(d => ({ id: d.id, ...d.data() })), snap.metadata);
   }, err);
-  // writes resolve when the server confirms; offline they queue, so don't block the UI on them
-  const w = p => { p.catch(fail); return Promise.resolve(); };
-  Store.add = (col, d) => w(ff.addDoc(ff.collection(fs, col), d));
+  // writes confirm when the server answers; offline they queue — never block the UI on them
+  const w = p => { p.catch(fail); };
+  Store.add = (col, d) => { const ref = ff.doc(ff.collection(fs, col)); w(ff.setDoc(ref, d)); return ref.id; };
   Store.set = (col, id, d) => w(ff.setDoc(ff.doc(fs, col, id), d));
   Store.update = (col, id, d) => w(ff.updateDoc(ff.doc(fs, col, id), d));
   Store.remove = (col, id) => w(ff.deleteDoc(ff.doc(fs, col, id)));
@@ -242,7 +249,11 @@ async function initFirebase(){
 }
 
 /* ============ helpers ============ */
-const money = v => { const r = Math.round(v * 100) / 100; return r.toLocaleString("en-US", { maximumFractionDigits: 2 }) + (settings.currency ? " " + settings.currency : ""); };
+const money = v => {
+  const syp = settings.currency === "ل.س";
+  const r = syp ? Math.round(v) : Math.round(v * 100) / 100;
+  return r.toLocaleString("en-US", { maximumFractionDigits: syp ? 0 : 2 }) + " " + (syp ? "ل.س" : "$");
+};
 function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("on"), 2400); }
 function fail(e){
   const c = (e && e.code) || "";
@@ -251,7 +262,10 @@ function fail(e){
   else toast("صار خطأ بالحفظ، جرّب مرة تانية");
   console.error(e);
 }
-const prodCost = p => num(p.cost) + (p.extras || []).reduce((a,e)=>a + num(e.amount), 0);
+const printLabel = n => /^\s*طبعة/.test(n||"") ? n : "طبعة " + n;
+const sumEx = ex => (ex || []).reduce((a,e) => a + num(e.amount), 0);
+const prodCost = p => num(p.cost) + sumEx(p.extras);
+const itemUnitCost = i => i.cost !== undefined ? num(i.cost) + sumEx(i.extras) + num(i.printCost) : num(i.unitCost);
 const ymd = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const todayStr = () => ymd(new Date());
 function inPeriod(ds, p){
@@ -279,16 +293,30 @@ function waNumber(phone){
   return p;
 }
 
-const DELIVERY = {
-  pending:   { t:"قيد الانتظار", c:"warn", k:"w" },
-  transit:   { t:"بالطريق / مع المندوب", s:"بالطريق", c:"info", k:"i" },
-  delivered: { t:"تم التسليم", c:"good", k:"g" },
-  cancelled: { t:"ملغي", c:"bad", k:"b" }
-};
+const statusOf = o => o.status === "delivered" ? "delivered" : "pending";
+const STATUS = { pending: { t:"قيد الانتظار", c:"warn", k:"w" }, delivered: { t:"تم التسليم", c:"good", k:"g" } };
 const METHODS = { damascus:"توصيل ضمن دمشق", shipping:"شركة شحن", pickup:"استلام من المحل" };
 const orderTotal = o => (o.items||[]).reduce((a,i)=>a + num(i.qty)*num(i.price), 0);
-const orderCost = o => (o.items||[]).reduce((a,i)=>a + num(i.qty)*num(i.unitCost), 0);
+const orderCost = o => (o.items||[]).reduce((a,i)=>a + num(i.qty)*itemUnitCost(i), 0);
 const findProduct = name => { const n = norm(name); if (!n) return null; return products.find(p => norm(p.name) === n || (p.code && norm(p.code) === n)) || null; };
+
+/* ============ WhatsApp message to the customer ============ */
+function customerMessage(o){
+  const lines = (o.items||[]).map(i => "• " + i.name + (i.variant ? " (" + i.variant + ")" : "") + (i.printName ? " — " + printLabel(i.printName) : "") + " × " + num(i.qty));
+  const hi = "مرحباً" + (o.name ? " " + o.name.split(" ")[0] : "") + " 🤍";
+  const ship = o.method === "shipping" ? "رح نبعتلك الطلب عن طريق شركة الشحن ونبعتلك رقم الإرسالية." :
+               o.method === "pickup" ? "فيك تستلم طلبك من المحل، ورح نتواصل معك لنحدد الوقت." :
+               "رح نتواصل معك لنحدد مكان وموعد التسليم.";
+  if (o.paid) {
+    return [hi, "", "تم تأكيد طلبك رقم " + (o.number||"") + " من Kül ✅", "", ...lines, "",
+      "المجموع: " + money(orderTotal(o)), "الدفع: تم الاستلام ✅", "", ship, "", "شكراً لاختيارك Kül 🖤"].join("\n");
+  }
+  return [hi, "", "استلمنا طلبك رقم " + (o.number||"") + " من Kül 🛍", "", ...lines, "",
+    "المجموع: " + money(orderTotal(o)),
+    "الدفع: بانتظار التحويل" + (o.payMethod ? " عبر " + o.payMethod : ""),
+    "", "بعد التحويل ابعتلنا رقم العملية لنأكّد طلبك.", "", "شكراً لاختيارك Kül 🖤"].join("\n");
+}
+const waLink = o => "https://wa.me/" + waNumber(o.phone) + "?text=" + encodeURIComponent(customerMessage(o));
 
 /* ============ parser for pasted order messages ============ */
 function parseOrder(text){
@@ -324,17 +352,15 @@ function parseOrder(text){
 }
 
 /* ============ rendering ============ */
-function deliveryPill(o){ const d = DELIVERY[o.status] || DELIVERY.pending; return `<span class="pill ${d.c}">${d.s || d.t}</span>`; }
-function payPill(o){ return o.paid ? `<span class="pill good">الدفع وصل ✓</span>` : `<span class="pill bad">الدفع ما وصل</span>`; }
+const statusPill = o => { const s = STATUS[statusOf(o)]; return `<span class="pill ${s.c}">${s.t}</span>`; };
+const payPill = o => o.paid ? `<span class="pill good">الدفع وصل ✓</span>` : `<span class="pill bad">الدفع ما وصل</span>`;
 
 function orderMatches(o){
-  const f = orderFilter, st = o.status || "pending";
-  if (f === "open" && (st === "cancelled" || (st === "delivered" && o.paid))) return false;
+  const f = orderFilter, st = statusOf(o);
+  if (f === "open" && st === "delivered" && o.paid) return false;
   if (f === "pending" && st !== "pending") return false;
-  if (f === "transit" && st !== "transit") return false;
   if (f === "delivered" && st !== "delivered") return false;
-  if (f === "cancelled" && st !== "cancelled") return false;
-  if (f === "unpaid" && (o.paid || st === "cancelled")) return false;
+  if (f === "unpaid" && o.paid) return false;
   const q = norm($("#orderSearch").value);
   if (q && !(norm(o.number).includes(q) || norm(o.name).includes(q) || String(o.phone||"").replace(/\D/g,"").includes(q.replace(/\D/g,"") || "@@"))) return false;
   return true;
@@ -342,7 +368,7 @@ function orderMatches(o){
 
 function renderOrders(){
   const el = $("#orderList");
-  const pend = orders.filter(o => (o.status || "pending") === "pending").length;
+  const pend = orders.filter(o => statusOf(o) === "pending").length;
   const b = $("#pendBadge"); b.textContent = pend; b.style.display = pend ? "" : "none";
   if (!got.orders){ el.innerHTML = '<div class="empty">جاري التحميل…</div>'; return; }
   if (!orders.length){ el.innerHTML = '<div class="empty"><b>ما في طلبات لسا</b>اضغط + والصق رسالة الطلب متل ما بتوصلك، والتطبيق بيعبّي البيانات لحاله</div>'; return; }
@@ -355,7 +381,7 @@ function renderOrders(){
     html += `<div class="card tap" data-oid="${esc(o.id)}">
       <div class="top"><div><h3>${esc(o.name || "بدون اسم")}</h3><div class="muted" dir="ltr" style="text-align:right">#${esc(o.number || "—")}</div></div><b style="font-size:17px">${money(orderTotal(o))}</b></div>
       <div class="items">${items}</div>
-      <div class="pills">${deliveryPill(o)}${payPill(o)}<span class="pill grey">${esc(METHODS[o.method] || "توصيل")}</span></div>
+      <div class="pills">${statusPill(o)}${payPill(o)}<span class="pill grey">${esc(METHODS[o.method] || "توصيل")}</span></div>
     </div>`;
   });
   el.innerHTML = html;
@@ -364,15 +390,16 @@ function renderOrders(){
 function renderProducts(){
   const el = $("#prodList");
   if (!got.products){ el.innerHTML = '<div class="empty">جاري التحميل…</div>'; return; }
-  if (!products.length){ el.innerHTML = '<div class="empty"><b>ما في منتجات لسا</b>اضغط + لتضيف منتج مع سعر التكلفة والإضافات وسعر البيع. اكتب الاسم متل ما بيجي بالطلب (مثلاً Kül hoodie) ليرتبط تلقائياً.</div>'; return; }
+  if (!products.length){ el.innerHTML = '<div class="empty"><b>ما في منتجات لسا</b>اضغط + لتضيف منتج مع سعر التكلفة والإضافات والطبعات وسعر البيع. اكتب الاسم متل ما بيجي بالطلب (مثلاً Kül hoodie) ليرتبط تلقائياً.</div>'; return; }
   const q = norm($("#prodSearch").value);
   const sold = {};
-  orders.forEach(o => { if (o.status !== "cancelled") (o.items||[]).forEach(i => { if (i.productId) sold[i.productId] = (sold[i.productId]||0) + num(i.qty); }); });
+  orders.forEach(o => (o.items||[]).forEach(i => { if (i.productId) sold[i.productId] = (sold[i.productId]||0) + num(i.qty); }));
   const list = products.filter(p => !q || norm(p.name).includes(q) || norm(p.code).includes(q)).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
   if (!list.length){ el.innerHTML = '<div class="empty">ما في نتائج</div>'; return; }
   el.innerHTML = list.map(p => {
     const c = prodCost(p), s = num(p.price), pr = s - c, m = s ? Math.round(pr/s*100) : 0;
     const ex = (p.extras||[]).filter(e => e.name || num(e.amount));
+    const prints = (p.prints||[]).filter(x => x.name);
     return `<div class="card tap" data-pid="${esc(p.id)}">
       <div class="top"><div><h3>${esc(p.name)}</h3><div class="muted">${p.code ? esc(p.code) + " · " : ""}انباع ${sold[p.id] || 0} قطعة</div></div>
       <span class="pill ${pr >= 0 ? "good" : "bad"}">ربح ${m}%</span></div>
@@ -382,6 +409,7 @@ function renderProducts(){
         <div class="mini"><div class="l">ربح القطعة</div><div class="v" style="color:var(${pr>=0?"--good":"--bad"})">${money(pr)}</div></div>
       </div>
       ${ex.length ? `<div class="muted" style="margin-top:8px">أساسي ${money(num(p.cost))} + ${ex.map(e => esc(e.name || "إضافة") + " " + money(num(e.amount))).join(" + ")}</div>` : ""}
+      ${prints.length ? `<div class="muted" style="margin-top:4px">الطبعات: ${prints.map(x => esc(x.name) + " +" + money(num(x.cost))).join("، ")}</div>` : ""}
     </div>`;
   }).join("");
 }
@@ -389,15 +417,15 @@ function renderProducts(){
 function renderProfit(){
   const el = $("#profitBox");
   if (!got.orders){ el.innerHTML = '<div class="empty">جاري التحميل…</div>'; return; }
-  const list = orders.filter(o => o.status !== "cancelled" && inPeriod(o.date, profitPeriod));
-  let rev = 0, cost = 0, qty = 0, unpaid = 0, delivered = 0, collected = 0, unlinked = 0; const byP = {};
+  const list = orders.filter(o => inPeriod(o.date, profitPeriod));
+  let rev = 0, cost = 0, qty = 0, unpaid = 0, delivered = 0, collected = 0, noCost = 0; const byP = {};
   list.forEach(o => {
     const r = orderTotal(o); rev += r; cost += orderCost(o);
     if (!o.paid) unpaid += r; else collected += r;
-    if (o.status === "delivered") delivered++;
+    if (statusOf(o) === "delivered") delivered++;
     (o.items||[]).forEach(i => {
-      const q = num(i.qty), ir = q*num(i.price), ic = q*num(i.unitCost); qty += q;
-      if (!i.productId) unlinked++;
+      const q = num(i.qty), uc = itemUnitCost(i), ir = q*num(i.price), ic = q*uc; qty += q;
+      if (!uc) noCost++;
       const k = i.productId || "n:" + norm(i.name);
       byP[k] = byP[k] || { name: i.name, qty:0, profit:0 }; byP[k].qty += q; byP[k].profit += ir - ic;
     });
@@ -406,7 +434,7 @@ function renderProfit(){
   const top = Object.values(byP).sort((a,b)=>b.profit-a.profit);
   const maxP = Math.max(1, ...top.map(t => Math.abs(t.profit)));
   el.innerHTML = `
-    ${unlinked ? `<div class="banner on">في ${unlinked} قطعة بالطلبات مو مربوطة بمنتج، فتكلفتها محسوبة صفر والربح طالع أعلى من الحقيقي. افتح الطلب واختار المنتج.</div>` : ""}
+    ${noCost ? `<div class="banner on">في ${noCost} قطعة بالطلبات بدون تكلفة، فالربح طالع أعلى من الحقيقي. افتح الطلب وعبّي تكلفتها.</div>` : ""}
     <div class="card"><div class="muted">صافي الربح</div>
       <div class="big" style="color:var(${profit>=0?"--good":"--bad"})">${money(profit)}</div>
       <div class="muted">هامش ${margin}% · ${list.length} طلب · ${delivered} تم تسليمه</div></div>
@@ -421,15 +449,11 @@ function renderProfit(){
     <h2 class="sec">الأرباح حسب المنتج</h2>
     <div class="card">${top.length ? top.map(t => `<div class="row" style="display:block">
       <div style="display:flex;justify-content:space-between"><span><b>${esc(t.name)}</b> <span class="muted">× ${t.qty}</span></span><b style="color:var(${t.profit>=0?"--good":"--bad"})">${money(t.profit)}</b></div>
-      <div class="bar"><i style="width:${Math.round(Math.abs(t.profit)/maxP*100)}%"></i></div></div>`).join("") : '<div class="empty" style="padding:20px">ما في طلبات بهالفترة</div>'}</div>
-    <div class="muted" style="margin:10px 4px">الطلبات الملغية ما بتنحسب.</div>`;
+      <div class="bar"><i style="width:${Math.round(Math.abs(t.profit)/maxP*100)}%"></i></div></div>`).join("") : '<div class="empty" style="padding:20px">ما في طلبات بهالفترة</div>'}</div>`;
 }
 
 function render(){
-  $("#brandTitle").textContent = settings.brand || "إدارة البراند";
-  $("#loginTitle").textContent = settings.brand || "إدارة البراند";
-  document.title = settings.brand || "إدارة البراند";
-  renderOrders(); // always, so the pending badge stays fresh
+  renderOrders();
   if (view === "products") renderProducts();
   if (view === "profit") renderProfit();
   $("#fab").style.display = view === "profit" ? "none" : "";
@@ -459,56 +483,66 @@ function closeSheet(){ ov.classList.remove("on"); sheet.innerHTML = ""; }
 ov.addEventListener("click", e => { if (e.target === ov) closeSheet(); });
 function confirmSheet(msg, ok){
   openSheet(`<h2>تأكيد</h2><p>${msg}</p><div class="btns"><button class="btn sec" id="cNo">لا</button><button class="btn dng" id="cYes">إي، احذف</button></div>`);
-  $("#cNo").onclick = closeSheet; $("#cYes").onclick = async () => { await ok(); closeSheet(); };
+  $("#cNo").onclick = closeSheet; $("#cYes").onclick = () => { ok(); closeSheet(); };
 }
 
+const exRow = (n="", a="", ph="تطريز، تغليف، ليبل…") => `<div class="exrow"><input class="exn" placeholder="${ph}" value="${esc(n)}"><input class="exa" inputmode="decimal" placeholder="المبلغ" value="${esc(a)}"><button class="x exdel" type="button">✕</button></div>`;
+const prRow = (n="", a="") => `<div class="exrow prrow"><input class="prn" placeholder="اسم الطبعة" value="${esc(n)}"><input class="pra" inputmode="decimal" placeholder="تكلفتها" value="${esc(a)}"><button class="x exdel" type="button">✕</button></div>`;
+const readExtras = root => [...root.querySelectorAll(".exrow:not(.prrow)")].map(r => ({ name: r.querySelector(".exn").value.trim(), amount: num(r.querySelector(".exa").value) })).filter(x => x.name || x.amount);
+
 /* --- product --- */
-const exRow = (n="", a="") => `<div class="exrow"><input class="exn" placeholder="تطريز، طباعة، تغليف…" value="${esc(n)}"><input class="exa" inputmode="decimal" placeholder="المبلغ" value="${esc(a)}"><button class="x exdel" type="button">✕</button></div>`;
-function productSheet(p, preset){
-  const isNew = !p; p = p || { name: preset || "", code:"", cost:"", extras:[], price:"" };
+function productSheet(p){
+  const isNew = !p; p = p || { name:"", code:"", cost:"", extras:[], prints:[], price:"" };
   openSheet(`<h2>${isNew ? "منتج جديد" : "تعديل المنتج"}</h2><form id="pf">
     <label>اسم المنتج (متل ما بيجي بالطلب)</label><input id="pName" required value="${esc(p.name)}" placeholder="مثلاً: Kül hoodie">
     <label>الكود / الموديل (اختياري)</label><input id="pCode" value="${esc(p.code)}">
     <label>سعر التكلفة الأساسي (قماش + خياطة)</label><input id="pCost" inputmode="decimal" value="${esc(p.cost)}" placeholder="0">
-    <label>الإضافات على التكلفة</label><div id="exList">${(p.extras||[]).map(e => exRow(e.name, e.amount)).join("")}</div>
+    <label>إضافات ثابتة على كل قطعة</label><div id="exList">${(p.extras||[]).map(e => exRow(e.name, e.amount)).join("")}</div>
     <button type="button" class="ghost" id="addEx">+ إضافة تكلفة</button>
+    <label>الطبعات (اختياري) — كل طبعة إلها تكلفة مختلفة</label><div id="prList">${(p.prints||[]).map(x => prRow(x.name, x.cost)).join("")}</div>
+    <button type="button" class="ghost" id="addPr">+ إضافة طبعة</button>
     <label>سعر البيع</label><input id="pPrice" inputmode="decimal" value="${esc(p.price)}" placeholder="0">
     <div class="calc" id="pCalc"></div>
     <div class="btns">${isNew ? "" : '<button type="button" class="btn dng" id="pDel" style="flex:0 0 auto;padding:13px 16px">حذف</button>'}
       <button type="button" class="btn sec" id="pCancel">إلغاء</button><button class="btn pri">حفظ</button></div></form>`);
   const calc = () => {
-    const ex = [...sheet.querySelectorAll(".exa")].reduce((a,i) => a + num(i.value), 0);
-    const c = num($("#pCost").value) + ex, s = num($("#pPrice").value), pr = s - c;
-    $("#pCalc").innerHTML = `<div class="row"><span>التكلفة الكلية</span><b>${money(c)}</b></div><div class="row"><span>ربح القطعة</span><b style="color:var(${pr>=0?"--good":"--bad"})">${money(pr)}${s ? " (" + Math.round(pr/s*100) + "%)" : ""}</b></div>`;
+    const c = num($("#pCost").value) + readExtras($("#exList")).reduce((a,e)=>a+e.amount,0), s = num($("#pPrice").value), pr = s - c;
+    const prints = [...sheet.querySelectorAll(".prrow")].map(r => ({ n: r.querySelector(".prn").value.trim(), c: num(r.querySelector(".pra").value) })).filter(x => x.n);
+    $("#pCalc").innerHTML = `<div class="row"><span>التكلفة الكلية${prints.length ? " (بدون طبعة)" : ""}</span><b>${money(c)}</b></div><div class="row"><span>ربح القطعة</span><b style="color:var(${pr>=0?"--good":"--bad"})">${money(pr)}${s ? " (" + Math.round(pr/s*100) + "%)" : ""}</b></div>` +
+      prints.map(x => `<div class="row"><span>مع ${esc(printLabel(x.n))}</span><span>تكلفة ${money(c + x.c)} · ربح <b style="color:var(${s-c-x.c>=0?"--good":"--bad"})">${money(s - c - x.c)}</b></span></div>`).join("");
   };
   $("#pf").addEventListener("input", calc); calc();
   $("#addEx").onclick = () => { $("#exList").insertAdjacentHTML("beforeend", exRow()); calc(); };
-  $("#exList").onclick = e => { if (e.target.classList.contains("exdel")) { e.target.parentElement.remove(); calc(); } };
+  $("#addPr").onclick = () => { $("#prList").insertAdjacentHTML("beforeend", prRow()); calc(); };
+  $("#pf").addEventListener("click", e => { if (e.target.classList.contains("exdel")) { e.target.parentElement.remove(); calc(); } });
   $("#pCancel").onclick = closeSheet;
-  if ($("#pDel")) $("#pDel").onclick = () => confirmSheet(`حذف "${esc(p.name)}"؟ الطلبات القديمة بتضل محفوظة بتكلفتها.`, async () => { await Store.remove("products", p.id); toast("انحذف المنتج"); });
-  $("#pf").onsubmit = async e => {
+  if ($("#pDel")) $("#pDel").onclick = () => confirmSheet(`حذف "${esc(p.name)}"؟ الطلبات القديمة بتضل محفوظة بتكلفتها.`, () => { Store.remove("products", p.id); toast("انحذف المنتج"); });
+  $("#pf").onsubmit = e => {
     e.preventDefault();
-    const extras = [...sheet.querySelectorAll(".exrow")].map(r => ({ name: r.querySelector(".exn").value.trim(), amount: num(r.querySelector(".exa").value) })).filter(x => x.name || x.amount);
-    const d = { name: $("#pName").value.trim(), code: $("#pCode").value.trim(), cost: num($("#pCost").value), extras, price: num($("#pPrice").value), updatedAt: Date.now(), createdAt: p.createdAt || Date.now() };
+    const prints = [...sheet.querySelectorAll(".prrow")].map(r => ({ name: r.querySelector(".prn").value.trim(), cost: num(r.querySelector(".pra").value) })).filter(x => x.name);
+    const d = { name: $("#pName").value.trim(), code: $("#pCode").value.trim(), cost: num($("#pCost").value), extras: readExtras($("#exList")), prints,
+      price: num($("#pPrice").value), updatedAt: Date.now(), createdAt: p.createdAt || Date.now() };
     if (!d.name) return;
-    if (isNew) await Store.add("products", d); else await Store.set("products", p.id, d);
+    if (isNew) Store.add("products", d); else Store.set("products", p.id, d);
     closeSheet(); toast(isNew ? "انضاف المنتج" : "انحفظ التعديل");
   };
 }
 
 /* --- order detail --- */
 function orderDetail(o){
-  const wa = waNumber(o.phone);
-  const tot = orderTotal(o), pr = tot - orderCost(o);
+  const tot = orderTotal(o), pr = tot - orderCost(o), st = statusOf(o);
   openSheet(`<div class="top"><div><h2 style="margin:0">${esc(o.name || "بدون اسم")}</h2><div class="muted" dir="ltr" style="text-align:right">#${esc(o.number||"—")} · ${esc(o.date||"")}</div></div><b style="font-size:20px">${money(tot)}</b></div>
-    ${o.phone ? `<div class="btns" style="margin-top:12px"><a class="btn wa sm" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">واتساب</a><a class="btn sec sm" href="tel:${esc(o.phone)}">اتصال <span dir="ltr">${esc(o.phone)}</span></a></div>` : ""}
-    <label>حالة التسليم</label>
-    <div class="seg" id="dSeg">${Object.entries(DELIVERY).map(([k,v]) => `<button data-s="${k}" class="${(o.status||"pending")===k ? "on " + v.k : ""}">${v.s || v.t}</button>`).join("")}</div>
+    <label>حالة الطلب</label>
+    <div class="seg" id="dSeg">${Object.entries(STATUS).map(([k,v]) => `<button data-s="${k}" class="${st===k ? "on " + v.k : ""}">${v.t}</button>`).join("")}</div>
     <label>الدفع${o.payMethod ? " — " + esc(o.payMethod) : ""}</label>
     <div class="seg" id="pSeg"><button data-p="0" class="${!o.paid ? "on b" : ""}">ما وصل</button><button data-p="1" class="${o.paid ? "on g" : ""}">وصل ✓</button></div>
     ${o.payRef ? `<div class="muted" style="margin-top:6px">رقم العملية: <b dir="ltr">${esc(o.payRef)}</b></div>` : ""}
+    ${o.phone ? `<a class="btn wa" id="waBtn" style="width:100%;margin-top:14px" href="${esc(waLink(o))}" target="_blank" rel="noopener"></a>
+      <div class="btns" style="margin-top:8px"><a class="btn sec sm" href="https://wa.me/${esc(waNumber(o.phone))}" target="_blank" rel="noopener">محادثة واتساب</a><a class="btn sec sm" href="tel:${esc(o.phone)}">اتصال <span dir="ltr">${esc(o.phone)}</span></a></div>` : `<div class="muted" style="margin-top:12px">ما في رقم هاتف لهالطلب، ضيفه من «تعديل» لتقدر تبعت رسالة.</div>`}
     <div class="calc" style="margin-top:14px">
-      ${(o.items||[]).map(i => `<div class="row"><span>${esc(i.name)}${i.variant ? ` <span class="muted">(${esc(i.variant)})</span>` : ""} × ${num(i.qty)}${i.productId ? "" : ' <span class="pill warn">مو مربوط</span>'}</span><b>${money(num(i.qty)*num(i.price))}</b></div>`).join("")}
+      ${(o.items||[]).map(i => { const uc = itemUnitCost(i), ip = num(i.qty)*(num(i.price) - uc); return `<div class="row" style="display:block">
+        <div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(i.name)}${i.variant ? ` <span class="muted">(${esc(i.variant)})</span>` : ""} × ${num(i.qty)}</span><b>${money(num(i.qty)*num(i.price))}</b></div>
+        <div class="muted">${i.printName ? esc(printLabel(i.printName)) + " · " : ""}تكلفة القطعة ${money(uc)} · ربح ${money(ip)}${uc ? "" : ' · <span style="color:var(--warn)">بدون تكلفة</span>'}</div></div>`; }).join("")}
       <div class="row"><span>ربح الطلب</span><b style="color:var(${pr>=0?"--good":"--bad"})">${money(pr)}</b></div>
     </div>
     <div class="calc">
@@ -517,28 +551,61 @@ function orderDetail(o){
       ${o.notes ? `<div class="row"><span>ملاحظات</span><span style="text-align:left;white-space:pre-wrap">${esc(o.notes)}</span></div>` : ""}
     </div>
     <div class="btns"><button class="btn dng" id="oDel" style="flex:0 0 auto;padding:13px 16px">حذف</button><button class="btn sec" id="oClose">سكّر</button><button class="btn pri" id="oEdit">تعديل</button></div>`);
-  $("#dSeg").onclick = async e => { const b = e.target.closest("button"); if (!b) return;
-    const s = b.dataset.s; await Store.update("orders", o.id, { status: s, updatedAt: Date.now() });
-    o.status = s; [...$("#dSeg").children].forEach(x => x.className = x === b ? "on " + DELIVERY[s].k : ""); toast("صارت الحالة: " + DELIVERY[s].t); };
-  $("#pSeg").onclick = async e => { const b = e.target.closest("button"); if (!b) return;
-    const paid = b.dataset.p === "1"; await Store.update("orders", o.id, { paid, updatedAt: Date.now() });
-    o.paid = paid; [...$("#pSeg").children].forEach(x => x.className = x === b ? "on " + (paid ? "g" : "b") : ""); toast(paid ? "الدفع وصل ✓" : "الدفع ما وصل"); };
+  const refreshWa = () => { const a = $("#waBtn"); if (!a) return; a.href = waLink(o); a.textContent = o.paid ? "📩 ابعت تأكيد الطلب للزبون" : "📩 ابعت للزبون: استلمنا طلبك وبانتظار الدفع"; };
+  refreshWa();
+  $("#dSeg").onclick = e => { const b = e.target.closest("button"); if (!b) return;
+    const s = b.dataset.s; Store.update("orders", o.id, { status: s, updatedAt: Date.now() });
+    o.status = s; [...$("#dSeg").children].forEach(x => x.className = x === b ? "on " + STATUS[s].k : ""); toast(STATUS[s].t); };
+  $("#pSeg").onclick = e => { const b = e.target.closest("button"); if (!b) return;
+    const paid = b.dataset.p === "1"; if (paid === !!o.paid) return;
+    Store.update("orders", o.id, { paid, updatedAt: Date.now() });
+    o.paid = paid; [...$("#pSeg").children].forEach(x => x.className = x === b ? "on " + (paid ? "g" : "b") : ""); refreshWa();
+    if (paid && $("#waBtn")) { toast("الدفع وصل ✓ — ابعت التأكيد للزبون"); const a = $("#waBtn"); a.classList.remove("pulse"); void a.offsetWidth; a.classList.add("pulse"); a.scrollIntoView({ block: "center", behavior: "smooth" }); }
+    else toast(paid ? "الدفع وصل ✓" : "الدفع ما وصل"); };
   $("#oClose").onclick = closeSheet;
   $("#oEdit").onclick = () => orderForm(o);
-  $("#oDel").onclick = () => confirmSheet(`حذف الطلب #${esc(o.number||"")}؟ لو الطلب انلغى الأفضل تخلّي حالته "ملغي" بدل الحذف.`, async () => { await Store.remove("orders", o.id); toast("انحذف الطلب"); });
+  $("#oDel").onclick = () => confirmSheet(`حذف الطلب #${esc(o.number||"")}؟`, () => { Store.remove("orders", o.id); toast("انحذف الطلب"); });
 }
 
-/* --- order form --- */
+/* --- order form: every item carries its own cost, extras, print and sale price --- */
 function productOptions(sel){
-  return `<option value="">— اختار المنتج —</option>` + [...products].sort((a,b)=>(a.name||"").localeCompare(b.name||"")).map(p => `<option value="${esc(p.id)}" ${p.id === sel ? "selected" : ""}>${esc(p.name)}${p.code ? " · " + esc(p.code) : ""}</option>`).join("");
+  return `<option value="">✏️ قطعة خاصة / طباعة خاصة</option>` + [...products].sort((a,b)=>(a.name||"").localeCompare(b.name||"")).map(p => `<option value="${esc(p.id)}" ${p.id === sel ? "selected" : ""}>${esc(p.name)}${p.code ? " · " + esc(p.code) : ""}</option>`).join("");
+}
+function printOptions(p, selName){
+  const prints = (p && p.prints || []).filter(x => x.name);
+  if (!prints.length) return "";
+  return `<option value="">بدون طبعة</option>` + prints.map((x,ix) => `<option value="${ix}" ${x.name === selName ? "selected" : ""}>${esc(x.name)} (+${money(num(x.cost))})</option>`).join("");
 }
 function itemCard(i){
-  i = i || { name:"", variant:"", qty:1, price:"" };
-  return `<div class="itemcard" data-cost="${i.unitCost ?? ""}" data-pid0="${esc(i.productId || "")}">
+  i = i || { name:"", variant:"", qty:1, price:"", cost:"", extras:[] };
+  const p = products.find(x => x.id === i.productId);
+  const cost = i.cost !== undefined ? i.cost : (i.unitCost !== undefined ? i.unitCost : "");
+  const pOpts = printOptions(p, i.printName);
+  const open = !p || !num(cost);
+  return `<div class="itemcard" data-pid0="${esc(i.productId || "")}" data-print-name="${esc(i.printName || "")}" data-print-cost="${esc(i.printCost ?? "")}">
     <div style="display:flex;gap:6px"><select class="iProd">${productOptions(i.productId)}</select><button type="button" class="x iDel">✕</button></div>
     <div class="r"><input class="iName" placeholder="اسم القطعة" value="${esc(i.name)}"><input class="iVar" placeholder="اللون / المقاس" value="${esc(i.variant)}"></div>
-    <div class="r"><div style="flex:1"><div class="muted">الكمية</div><input class="iQty" inputmode="numeric" value="${esc(i.qty)}"></div><div style="flex:1"><div class="muted">سعر القطعة</div><input class="iPrice" inputmode="decimal" value="${esc(i.price)}"></div></div>
+    <div class="r iPrintWrap" style="${pOpts ? "" : "display:none"}"><div><div class="muted">الطبعة</div><select class="iPrint">${pOpts}</select></div></div>
+    <div class="r"><div><div class="muted">الكمية</div><input class="iQty" inputmode="numeric" value="${esc(i.qty)}"></div><div><div class="muted">سعر بيع القطعة</div><input class="iPrice" inputmode="decimal" value="${esc(i.price)}"></div></div>
+    <details ${open ? "open" : ""}><summary><span>التكلفة ▾</span><span class="iSum"></span></summary>
+      <div class="r"><div><div class="muted">سعر التكلفة الأساسي</div><input class="iCost" inputmode="decimal" placeholder="0" value="${esc(cost)}"></div></div>
+      <div class="muted" style="margin-top:6px">الإضافات (طباعة، تطريز، تغليف…)</div>
+      <div class="iEx">${(i.extras||[]).map(e => exRow(e.name, e.amount, "طباعة، تطريز…")).join("")}</div>
+      <button type="button" class="ghost iAddEx" style="padding:7px">+ إضافة تكلفة</button>
+    </details>
   </div>`;
+}
+function readItem(card){
+  const pid = card.querySelector(".iProd").value, p = products.find(x => x.id === pid);
+  let printName = "", printCost = 0;
+  const ps = card.querySelector(".iPrint");
+  if (p && ps && ps.value !== "") { const x = (p.prints||[])[+ps.value]; if (x) { printName = x.name; printCost = num(x.cost); } }
+  else if (!p && card.dataset.printName) { printName = card.dataset.printName; printCost = num(card.dataset.printCost); }
+  const it = { productId: pid || "", name: card.querySelector(".iName").value.trim() || (p ? p.name : ""), variant: card.querySelector(".iVar").value.trim(),
+    qty: num(card.querySelector(".iQty").value) || 1, price: num(card.querySelector(".iPrice").value),
+    cost: num(card.querySelector(".iCost").value), extras: readExtras(card.querySelector(".iEx")), printName, printCost };
+  it.unitCost = itemUnitCost(it);
+  return it;
 }
 function orderForm(o){
   const isNew = !o;
@@ -556,35 +623,45 @@ function orderForm(o){
     <label>القطع</label><div id="itemList">${(o.items||[]).map(itemCard).join("")}</div>
     <button type="button" class="ghost" id="addItem">+ إضافة قطعة</button>
     <label>ملاحظات</label><textarea id="oNotes" style="min-height:60px">${esc(o.notes)}</textarea>
-    ${isNew ? `<label>الحالة</label><div class="grid2"><select id="oStatus">${Object.entries(DELIVERY).map(([k,v]) => `<option value="${k}">${v.t}</option>`).join("")}</select><select id="oPaid"><option value="0">الدفع ما وصل</option><option value="1">الدفع وصل</option></select></div>` : ""}
+    ${isNew ? `<label>الحالة</label><div class="grid2"><select id="oStatus"><option value="pending">قيد الانتظار</option><option value="delivered">تم التسليم</option></select><select id="oPaid"><option value="0">الدفع ما وصل</option><option value="1">الدفع وصل</option></select></div>` : ""}
     <div class="calc" id="oCalc"></div>
     <div class="btns"><button type="button" class="btn sec" id="oCancel">إلغاء</button><button class="btn pri">حفظ الطلب</button></div>
     </form>`);
   const list = $("#itemList");
   const calc = () => {
-    let t = 0, c = 0, missing = 0;
+    let t = 0, c = 0, noCost = 0;
     list.querySelectorAll(".itemcard").forEach(card => {
-      const q = num(card.querySelector(".iQty").value), pr = num(card.querySelector(".iPrice").value);
-      const p = products.find(x => x.id === card.querySelector(".iProd").value);
-      t += q*pr; if (p) c += q*prodCost(p); else missing++;
+      const it = readItem(card), lt = it.qty*it.price, lc = it.qty*it.unitCost;
+      t += lt; c += lc; if (!it.unitCost) noCost++;
+      card.querySelector(".iSum").innerHTML = `تكلفة القطعة <b>${money(it.unitCost)}</b> · ربح <b style="color:var(${lt-lc>=0?"--good":"--bad"})">${money(lt-lc)}</b>`;
     });
-    $("#oCalc").innerHTML = `<div class="row"><span>المجموع</span><b>${money(t)}</b></div><div class="row"><span>الربح</span><b style="color:var(${t-c>=0?"--good":"--bad"})">${money(t-c)}</b></div>` +
-      (missing ? `<div class="row"><span class="pill warn">${missing} قطعة مو مربوطة بمنتج</span><button type="button" class="ghost" id="newProdFromItem" style="width:auto;margin:0;padding:4px 10px">+ منتج جديد</button></div>` : "");
-    const np = $("#newProdFromItem");
-    if (np) np.onclick = () => {
-      const card = [...list.querySelectorAll(".itemcard")].find(c => !c.querySelector(".iProd").value);
-      toast("ضيف المنتج من تبويب المنتجات، وبعدين ارجع اختاره هون");
-      if (card) card.querySelector(".iProd").focus();
-    };
+    $("#oCalc").innerHTML = `<div class="row"><span>المجموع</span><b>${money(t)}</b></div><div class="row"><span>التكلفة</span><span>${money(c)}</span></div><div class="row"><span>الربح</span><b style="color:var(${t-c>=0?"--good":"--bad"})">${money(t-c)}</b></div>` +
+      (noCost ? `<div class="row"><span class="pill warn">${noCost} قطعة بدون تكلفة — عبّيها من «التكلفة ▾»</span></div>` : "");
   };
+  // choosing a product copies its cost, extras and prints into the item; everything stays editable for this order
   list.addEventListener("change", e => {
-    if (!e.target.classList.contains("iProd")) return;
-    const card = e.target.closest(".itemcard"), p = products.find(x => x.id === e.target.value);
-    if (p){ const n = card.querySelector(".iName"); if (!n.value) n.value = p.name; const pr = card.querySelector(".iPrice"); if (!pr.value) pr.value = num(p.price); }
+    const card = e.target.closest(".itemcard"); if (!card) return;
+    if (e.target.classList.contains("iProd")) {
+      const p = products.find(x => x.id === e.target.value);
+      const pw = card.querySelector(".iPrintWrap"), ps = card.querySelector(".iPrint");
+      card.dataset.printName = ""; card.dataset.printCost = "";
+      if (p) {
+        card.querySelector(".iName").value = p.name;
+        if (!num(card.querySelector(".iPrice").value)) card.querySelector(".iPrice").value = num(p.price);
+        card.querySelector(".iCost").value = num(p.cost);
+        card.querySelector(".iEx").innerHTML = (p.extras||[]).map(x => exRow(x.name, x.amount, "طباعة، تطريز…")).join("");
+        ps.innerHTML = printOptions(p, ""); pw.style.display = ps.innerHTML ? "" : "none";
+        if (ps.innerHTML) card.querySelector("details").open = true;
+      } else { ps.innerHTML = ""; pw.style.display = "none"; card.querySelector("details").open = true; }
+    }
     calc();
   });
   list.addEventListener("input", calc);
-  list.addEventListener("click", e => { if (e.target.classList.contains("iDel")) { e.target.closest(".itemcard").remove(); calc(); } });
+  list.addEventListener("click", e => {
+    if (e.target.classList.contains("iDel")) { e.target.closest(".itemcard").remove(); calc(); }
+    else if (e.target.classList.contains("exdel")) { e.target.parentElement.remove(); calc(); }
+    else if (e.target.classList.contains("iAddEx")) { e.target.previousElementSibling.insertAdjacentHTML("beforeend", exRow("", "", "طباعة، تطريز…")); calc(); }
+  });
   $("#addItem").onclick = () => { list.insertAdjacentHTML("beforeend", itemCard()); calc(); };
   if (!(o.items||[]).length) list.insertAdjacentHTML("beforeend", itemCard());
   calc();
@@ -599,51 +676,48 @@ function orderForm(o){
     if (r.payMethod) $("#oPay").value = r.payMethod; if (r.payRef) $("#oRef").value = r.payRef;
     if (r.notes) $("#oNotes").value = r.notes;
     if (r.items.length){
-      list.innerHTML = r.items.map(i => { const p = findProduct(i.name); return itemCard({ ...i, productId: p ? p.id : "" }); }).join("");
+      list.innerHTML = r.items.map(i => { const p = findProduct(i.name);
+        return itemCard(p ? { ...i, productId: p.id, cost: num(p.cost), extras: (p.extras||[]).map(x => ({...x})) } : { ...i, cost: "", extras: [] }); }).join("");
     }
     calc();
     const sum = r.items.reduce((a,i) => a + i.qty*i.price, 0);
     if (r.parsedTotal && Math.abs(sum - r.parsedTotal) > 0.01) toast("انتبه: مجموع القطع " + sum + " والمكتوب بالرسالة " + r.parsedTotal);
-    else toast("تمت قراءة الطلب ✓ راجع البيانات واحفظ");
+    else toast("تمت قراءة الطلب ✓ راجع الطبعة والتكلفة واحفظ");
     $("#raw").closest(".paste").style.display = "none";
   };
-  $("#of").onsubmit = async e => {
+  $("#of").onsubmit = e => {
     e.preventDefault();
-    const items = [...list.querySelectorAll(".itemcard")].map(card => {
-      const pid = card.querySelector(".iProd").value, p = products.find(x => x.id === pid);
-      const keep = pid && pid === card.dataset.pid0 && card.dataset.cost !== "";
-      return { productId: pid || "", name: card.querySelector(".iName").value.trim() || (p ? p.name : ""), variant: card.querySelector(".iVar").value.trim(),
-        qty: num(card.querySelector(".iQty").value) || 1, price: num(card.querySelector(".iPrice").value),
-        unitCost: keep ? num(card.dataset.cost) : (p ? prodCost(p) : 0) };
-    }).filter(i => i.name || i.productId);
+    const items = [...list.querySelectorAll(".itemcard")].map(readItem).filter(i => i.name || i.productId);
     if (!items.length){ toast("ضيف قطعة وحدة عالأقل"); return; }
-    const number = $("#oNum").value.trim() || ("ORD-" + Date.now().toString(36).slice(-5).toUpperCase());
+    const number = $("#oNum").value.trim() || ("KUL-" + Date.now().toString(36).slice(-6).toUpperCase());
     const d = { ...o, number, date: $("#oDate").value || todayStr(), name: $("#oName").value.trim(), phone: $("#oPhone").value.trim(),
       method: $("#oMethod").value, address: $("#oAddr").value.trim(), payMethod: $("#oPay").value.trim(), payRef: $("#oRef").value.trim(),
       notes: $("#oNotes").value.trim(), items, total: items.reduce((a,i) => a + i.qty*i.price, 0), updatedAt: Date.now() };
     delete d.id;
-    if (isNew){ d.createdAt = Date.now(); d.status = $("#oStatus").value; d.paid = $("#oPaid").value === "1"; await Store.add("orders", d); closeSheet(); toast("انحفظ الطلب ✓"); }
-    else { await Store.set("orders", o.id, d); toast("انحفظ التعديل"); orderDetail({ ...d, id: o.id }); }
+    if (isNew){ d.createdAt = Date.now(); d.status = $("#oStatus").value; d.paid = $("#oPaid").value === "1";
+      const id = Store.add("orders", d); toast("انحفظ الطلب ✓"); orderDetail({ ...d, id }); }
+    else { Store.set("orders", o.id, d); toast("انحفظ التعديل"); orderDetail({ ...d, id: o.id }); }
   };
 }
 
-/* --- settings --- */
+/* --- settings: only the currency is changeable --- */
 function settingsSheet(){
-  openSheet(`<h2>الإعدادات</h2><form id="stf">
-    <label>اسم البراند</label><input id="stBrand" value="${esc(settings.brand)}">
-    <label>العملة</label><input id="stCur" value="${esc(settings.currency)}" placeholder="$ أو ل.س">
-    <div class="muted" style="margin-top:10px">أي تعديل هون بيتغيّر عند كل المديرين.</div>
-    <div class="btns"><button type="button" class="btn sec" id="stCancel">إلغاء</button><button class="btn pri">حفظ</button></div></form>
+  const cur = settings.currency === "ل.س" ? "ل.س" : "$";
+  openSheet(`<h2>الإعدادات</h2>
+    <label>العملة</label>
+    <div class="seg" id="curSeg"><button data-c="$" class="${cur==="$" ? "on g" : ""}">دولار $</button><button data-c="ل.س" class="${cur==="ل.س" ? "on g" : ""}">ليرة سورية ل.س</button></div>
+    <div class="muted" style="margin-top:8px">تغيير العملة بيغيّر الرمز عند كل المديرين، وما بيحوّل الأرقام.</div>
     <h2 class="sec">نسخة احتياطية</h2>
     <button class="btn sec" id="backup" style="width:100%">تنزيل نسخة احتياطية (JSON)</button>
-    ${Store.logout ? `<button class="btn dng" id="logout" style="width:100%;margin-top:10px">تسجيل خروج</button>` : `<div class="banner on" style="margin-top:12px">وضع تجريبي: البيانات محفوظة على هالجهاز بس. لما تربط Firebase بتصير مشتركة بين كل المديرين.</div>`}`);
-  $("#stCancel").onclick = closeSheet;
-  $("#stf").onsubmit = async e => { e.preventDefault();
-    await Store.set("settings", "main", { brand: $("#stBrand").value.trim() || "إدارة البراند", currency: $("#stCur").value.trim() });
-    closeSheet(); toast("انحفظت الإعدادات"); };
+    ${Store.logout ? `<button class="btn dng" id="logout" style="width:100%;margin-top:10px">تسجيل خروج</button>` : `<div class="banner on" style="margin-top:12px">وضع تجريبي: البيانات محفوظة على هالجهاز بس.</div>`}
+    <div class="btns"><button class="btn sec" id="stClose">سكّر</button></div>`);
+  $("#curSeg").onclick = e => { const b = e.target.closest("button"); if (!b) return;
+    settings.currency = b.dataset.c; Store.set("settings", "main", { currency: b.dataset.c });
+    [...$("#curSeg").children].forEach(x => x.className = x === b ? "on g" : ""); render(); toast("العملة: " + b.dataset.c); };
+  $("#stClose").onclick = closeSheet;
   $("#backup").onclick = () => {
     const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), settings, products, orders }, null, 2)], { type: "application/json" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "backup-" + todayStr() + ".json"; document.body.appendChild(a); a.click(); a.remove();
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "kul-backup-" + todayStr() + ".json"; document.body.appendChild(a); a.click(); a.remove();
   };
   if ($("#logout")) $("#logout").onclick = () => Store.logout();
 }
@@ -654,6 +728,7 @@ $("#orderList").onclick = e => { const c = e.target.closest("[data-oid]"); if (c
 $("#prodList").onclick = e => { const c = e.target.closest("[data-pid]"); if (c) productSheet(products.find(p => p.id === c.dataset.pid)); };
 
 /* ============ boot ============ */
+document.title = APP_NAME;
 render();
 function startListening(){
   let fresh = { products:false, orders:false };
@@ -664,22 +739,22 @@ function startListening(){
     got[col] = true;
     if (meta && !meta.fromCache) fresh[col] = true;
     if (DEMO) $("#syncNote").textContent = "وضع تجريبي";
-    else if (fresh.products && fresh.orders){ clearTimeout(timer); $("#syncNote").textContent = meta && meta.hasPendingWrites ? "جاري الحفظ…" : "متزامن مع كل المديرين ✓"; }
+    else if (fresh.products && fresh.orders){ clearTimeout(timer); $("#syncNote").textContent = meta && meta.hasPendingWrites ? "جاري الحفظ…" : "متزامن ✓"; }
     render();
   };
   Store.listen("products", handle("products"), onErr);
   Store.listen("orders", handle("orders"), onErr);
-  Store.listen("settings", docs => { const m = docs.find(d => d.id === "main"); if (m) settings = { ...settings, ...m }; render(); }, () => {});
+  Store.listen("settings", docs => { const m = docs.find(d => d.id === "main"); if (m && m.currency) settings.currency = m.currency; render(); }, () => {});
 }
 if (DEMO){
-  $("#banner").textContent = "وضع تجريبي: البيانات محفوظة على هالجهاز بس لحد ما تربط Firebase.";
+  $("#banner").textContent = "وضع تجريبي: البيانات محفوظة على هالجهاز بس.";
   $("#banner").classList.add("on");
   startListening();
 } else {
   initFirebase().then(startListening).catch(e => { console.error(e); $("#syncNote").textContent = "ما قدر يحمّل — تأكد من الإنترنت"; toast("ما قدر يتصل، تأكد من الإنترنت وافتح التطبيق من جديد"); });
 }
 if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
-window.__parseOrder = parseOrder;
+window.__parseOrder = parseOrder; window.__msg = customerMessage;
 })();
 </script>
 </body>
