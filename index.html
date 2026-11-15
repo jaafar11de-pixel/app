@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0B0B0C">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#F4F4F2">
+<meta name="color-scheme" content="only light">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Kül</title>
@@ -16,18 +16,18 @@
 <style>
 /* ألوان ثابتة — لا تتغيّر مع الوضع الليلي أو النهاري */
 :root{
-  color-scheme: dark;
-  --bg:#0B0B0C; --card:#151516; --card2:#1d1d1f; --ink:#F2F2F2; --muted:#A5A5AA; --line:#2a2a2d;
-  --cream:#E23B4B; --on-cream:#FFFFFF;
-  --good:#8fc79c; --good-soft:#1c2a1f; --bad:#e8877a; --bad-soft:#2f1b18;
-  --warn:#e2bd72; --warn-soft:#2e2615; --info:#9db8e8; --info-soft:#1a2233; --wa:#2fb463;
+  color-scheme: only light;
+  --bg:#F4F4F2; --card:#FFFFFF; --card2:#F1F1EF; --ink:#111113; --muted:#6B6B72; --line:#E3E3DF;
+  --cream:#111113; --on-cream:#FFFFFF; --brand:#E21B2B;
+  --good:#17803D; --good-soft:#E3F3E8; --bad:#C62828; --bad-soft:#FBE7E7;
+  --warn:#9A6700; --warn-soft:#FFF3D6; --info:#2457C5; --info-soft:#E6EDFB; --wa:#2fb463;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo",system-ui,sans-serif;font-size:15px}
 body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+header{position:sticky;top:0;z-index:5;background:var(--card);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
 header .brand{display:flex;align-items:center;gap:12px}
-header img{height:34px;display:block}
+header img{height:38px;display:block}
 header .sub{font-size:12px;color:var(--muted)}
 .iconbtn{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:12px;width:40px;height:40px;font-size:18px;cursor:pointer}
 main{padding:14px 14px 0;max-width:720px;margin:0 auto}
@@ -35,7 +35,7 @@ main{padding:14px 14px 0;max-width:720px;margin:0 auto}
 .banner{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:var(--warn-soft);color:var(--warn);font-size:13px;display:none}
 .banner.on{display:block}
 .search{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;margin-bottom:10px}
-.search::placeholder,input::placeholder,textarea::placeholder{color:#6f6961}
+.search::placeholder,input::placeholder,textarea::placeholder{color:#9a9aa0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
 .tap{cursor:pointer}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
@@ -51,13 +51,13 @@ main{padding:14px 14px 0;max-width:720px;margin:0 auto}
 .mini .l{font-size:11px;color:var(--muted)}.mini .v{font-size:15px;font-weight:700}
 .empty{text-align:center;color:var(--muted);padding:40px 16px}
 .empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
-.fab{position:fixed;left:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:18px;border:0;background:var(--cream);color:var(--on-cream);font-size:30px;box-shadow:0 6px 20px rgba(0,0,0,.5);cursor:pointer;z-index:6}
+.fab{position:fixed;left:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:18px;border:0;background:var(--cream);color:var(--on-cream);font-size:30px;box-shadow:0 8px 22px rgba(17,17,19,.28);cursor:pointer;z-index:6}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:7}
 nav button{flex:1;border:0;background:none;color:var(--muted);font:inherit;font-size:13px;padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative}
 nav button .i{font-size:20px;filter:grayscale(1);opacity:.7}
 nav button.on{color:var(--cream);font-weight:700}
 nav button.on .i{filter:none;opacity:1}
-nav .badge{position:absolute;top:6px;right:calc(50% - 22px);background:var(--bad);color:#fff;border-radius:999px;font-size:10px;min-width:17px;height:17px;line-height:17px;padding:0 4px}
+nav .badge{position:absolute;top:6px;right:calc(50% - 22px);background:var(--brand);color:#fff;border-radius:999px;font-size:10px;min-width:17px;height:17px;line-height:17px;padding:0 4px}
 .chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px}
 .chips button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
 .chips button.on{background:var(--cream);color:var(--on-cream);border-color:var(--cream);font-weight:700}
@@ -71,7 +71,7 @@ nav .badge{position:absolute;top:6px;right:calc(50% - 22px);background:var(--bad
 h2.sec{font-size:14px;color:var(--muted);margin:18px 4px 8px;font-weight:600}
 .items{font-size:13px;margin-top:6px}
 /* sheets */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:20;display:none;align-items:flex-end;justify-content:center}
+.overlay{position:fixed;inset:0;background:rgba(17,17,19,.45);z-index:20;display:none;align-items:flex-end;justify-content:center}
 .overlay.on{display:flex}
 .sheet{background:var(--card);width:100%;max-width:720px;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:94vh;overflow:auto;border-top:1px solid var(--line)}
 .sheet h2{margin:0 0 10px;font-size:18px}
@@ -82,7 +82,7 @@ textarea{min-height:110px;resize:vertical}
 .exrow{display:flex;gap:6px;margin-bottom:6px}
 .exrow input{flex:1;min-width:0}.exrow input:first-child{flex:2}
 .x{border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px}
-.ghost{border:1px dashed #4a3236;background:none;color:var(--cream);border-radius:12px;padding:10px;width:100%;font:inherit;cursor:pointer;margin-top:6px}
+.ghost{border:1px dashed #c9c9c4;background:none;color:var(--cream);border-radius:12px;padding:10px;width:100%;font:inherit;cursor:pointer;margin-top:6px}
 .btns{display:flex;gap:8px;margin-top:16px}
 .btn{flex:1;padding:13px;border-radius:14px;border:0;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-align:center;text-decoration:none;display:inline-block}
 .btn.pri{background:var(--cream);color:var(--on-cream)}.btn.sec{background:var(--card2);color:var(--ink)}.btn.dng{background:var(--bad-soft);color:var(--bad)}
@@ -101,7 +101,7 @@ textarea{min-height:110px;resize:vertical}
 .seg{display:flex;background:var(--bg);border-radius:12px;padding:4px;gap:4px}
 .seg.grid{display:grid;grid-template-columns:1fr 1fr}
 .seg button{flex:1;border:0;background:none;padding:10px 4px;border-radius:9px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer}
-.seg button.on{font-weight:700;color:#0B0B0C}
+.seg button.on{font-weight:700;color:#fff}
 .seg button.on.g{background:var(--good)}.seg button.on.b{background:var(--bad)}.seg button.on.w{background:var(--warn)}.seg button.on.i{background:var(--info)}.seg button.on.c{background:var(--cream)}
 .paste{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:6px}
 .paste textarea{min-height:90px}
@@ -877,6 +877,38 @@ function maybeOpenShare(){
   if (pendingShare && got.products && got.orders) { const t = pendingShare; pendingShare = null; view = "orders"; orderForm(null, t); }
 }
 
+
+/* ============ تنبيه الطلب الجديد ============ */
+let actx = null;
+function unlockAudio(){ try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === "suspended") actx.resume(); } catch(e){} }
+function ding(){
+  try {
+    unlockAudio(); if (!actx) return;
+    [[880,0],[1175,.16],[1568,.32]].forEach(([f,t]) => {
+      const o = actx.createOscillator(), g = actx.createGain(); o.type = "sine"; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, actx.currentTime + t); g.gain.exponentialRampToValueAtTime(0.35, actx.currentTime + t + .02); g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + t + .3);
+      o.connect(g); g.connect(actx.destination); o.start(actx.currentTime + t); o.stop(actx.currentTime + t + .32);
+    });
+  } catch(e){}
+}
+function setBadge(n){ try { if (navigator.setAppBadge) (n ? navigator.setAppBadge(n) : navigator.clearAppBadge()); } catch(e){} document.title = (n ? "(" + n + ") " : "") + APP_NAME; }
+function newOrderAlert(list){
+  ding(); try { navigator.vibrate && navigator.vibrate([200,100,200]); } catch(e){}
+  const r = list[0]; toast("🔔 طلب جديد" + (list.length > 1 ? " (" + list.length + ")" : "") + (r && r.number ? " — " + r.number : ""));
+  try {
+    if ("Notification" in window && Notification.permission === "granted" && document.hidden) {
+      const o = { body: "افتح التطبيق لمراجعة الطلب وقبوله", icon: "icon-192.png", tag: "kul-new-order", renotify: true };
+      if (navigator.serviceWorker && navigator.serviceWorker.ready) navigator.serviceWorker.ready.then(reg => reg.showNotification("طلب جديد من الموقع", o)).catch(() => {});
+      else new Notification("طلب جديد من الموقع", o);
+    }
+  } catch(e){}
+}
+document.addEventListener("click", function once(){
+  unlockAudio();
+  try { if ("Notification" in window && Notification.permission === "default") Notification.requestPermission(); } catch(e){}
+  document.removeEventListener("click", once);
+}, { once:true });
+
 /* ============ التشغيل ============ */
 document.title = APP_NAME;
 render();
@@ -894,7 +926,16 @@ function startListening(){
   };
   Store.listen("products", handle("products"), onErr);
   Store.listen("orders", handle("orders"), onErr);
-  Store.listen("incoming", docs => { incoming = docs; render(); }, e => console.warn("incoming", e));
+  let seenInc = null;
+  Store.listen("incoming", (docs, meta) => {
+    incoming = docs;
+    if (seenInc === null && meta && meta.fromCache && !DEMO){ render(); return; }   // لا نعتبر نسخة الكاش خط الأساس
+    const ids = new Set(docs.map(d => d.id));
+    const fresh = seenInc ? docs.filter(d => !seenInc.has(d.id)) : [];
+    seenInc = ids;
+    if (fresh.length) newOrderAlert(fresh);
+    setBadge(docs.length); render();
+  }, e => console.warn("incoming", e));
   Store.listen("settings", docs => { const m = docs.find(d => d.id === "main"); if (m && m.currency) settings.currency = m.currency; render(); }, () => {});
 }
 if (DEMO){
